@@ -18,10 +18,33 @@ namespace carsBackEnd.Controllers
         // }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<User>> Get()
         {
+            User user1 = new User()
+            {
+                FirstName = "David",
+                LastName = "Mendez",
+                Email = "test@test.com",
+                PhoneNumber = "(123) 456-7890",
+                Gender = "Male",
+                Age = 20
+            };
+
+            User user2 = new User()
+            {
+                FirstName = "Mary",
+                LastName = "Hernandez",
+                Email = "test1@test1.com",
+                PhoneNumber = "(234) 567-8901",
+                Gender = "Female",
+                Age = 24
+            };
+
+            List<User> users = new List<User>();
+            users.Add(user1);
+            users.Add(user2);
             // Todo: Get all users from hard coded data
-            return new string[] { "value1", "value2" };
+            return users;
         }
 
         // GET api/values/5

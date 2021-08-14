@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace carsBackEnd.Models
 {
@@ -16,6 +18,25 @@ namespace carsBackEnd.Models
         public string Drivetrain { get; set; }
         public string Description { get; set; }
         public string Wear { get; set; }
+        
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime Created_At { get; set; }
+        
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime Updated_At { get; set; }
+
+        /****
+            This will connect to user id making it a one to many relationship 
+            A user can create a new listing of a car
+        ****/ 
+        [ForeignKey("user")]
+        public Guid UserId { get; set; }
+        public User user { get; set; }
+        public List<Engine> Engine { get; set; }
+        public Car()
+        {
+            Engine = new List<Engine>();
+        }
 
         // Todo: This is wear the engine class would be
         // public int MyProperty { get; set; }

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace carsBackEnd.Models
 {
@@ -13,5 +15,19 @@ namespace carsBackEnd.Models
         public string Gender { get; set; }
         public int Age { get; set; }
         public string Password { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime Created_At { get; set; }
+        
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime Updated_At { get; set; }
+        public List<Car> Cars { get; set; }
+        public List<Engine> Engines { get; set; }
+        // public List<Order> Orders { get; set; }
+        public User()
+        {
+            Cars = new List<Car>();
+            Engines = new List<Engine>();
+            // Orders = new List<Order>();
+        }
     }
 }
